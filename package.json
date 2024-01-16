@@ -12,7 +12,12 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/caveat": "^5.0.16",
+    "@fontsource/marck-script": "^5.0.18",
+    "@fontsource/meddon": "^5.0.18",
+    "@fontsource/pacifico": "^5.0.8",
     "@mui/material": "^5.15.4",
+    "html2canvas": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-signature-canvas": "^1.0.6"

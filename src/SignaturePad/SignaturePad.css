@@ -66,10 +66,16 @@ button:hover {
   padding: 20px;
   margin: 0;
   border-bottom: 1px solid #bec9d9;
+  color: #21242c;
+}
+
+.signature-pad-modal-tabs {
+  border-bottom: 1px solid #bec9d9;
 }
 
 .signature-pad-modal-content {
-  padding: 20px 0;
+  padding-top: 20px;
+  height: 440px;
 }
 
 .signature-pag-pen-color-selector {
@@ -170,4 +176,57 @@ button:hover {
 
 .signature-pad-modal-footer .done-button:hover {
   border-color: black;
+}
+
+.signature-pad-type-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.signature-pad-type-input {
+  background-color: inherit;
+  border: none;
+  caret-color: rgba(0,0,0,.5);
+  font-size: 41px;
+  font-weight: 700;
+  height: 86px;
+  width: 100%;
+  max-width: 640px;
+  letter-spacing: .02em;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 86px;
+  text-align: center;
+  border-bottom: 0.33px solid #848c9a;
+}
+
+.signature-pad-font-options {
+  height: 55%;
+}
+
+.signature-pad-font-radio-group {
+  background-color: #f0f3f9;
+  border-top: 1px solid #d8dfeb;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+label.font-type-option {
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #f0f3f9;
+  border-bottom: 1px solid #d8dfeb;
+  border-right: 1px solid #d8dfeb;
+  display: flex;
+  flex: 0 0 50%;
+  flex-direction: row;
+  font-size: 30px;
+  letter-spacing: .02em;
+  line-height: 20px;
+  padding-left: 3%;
+  margin: 0;
 }

@@ -15,3 +15,22 @@ export const penColorOptions = [
     color: '#4636e3'
   },
 ];
+
+export const typeFontFamilyOptions = [
+  {
+    id: 0,
+    value: 'Caveat',
+  },
+  {
+    id: 1,
+    value: 'Pacifico',
+  },
+  {
+    id: 2,
+    value: 'Marck Script',
+  },
+  {
+    id: 3,
+    value: 'Meddon',
+  },
+];
