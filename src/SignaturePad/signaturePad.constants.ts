@@ -1,4 +1,6 @@
-export const penColorOptions = [
+import { FontFamilyOption, PenColorOption } from "./signaturePad.types";
+
+export const penColorOptions: PenColorOption[] = [
   {
     id: 0,
     label: 'Black',
@@ -16,7 +18,7 @@ export const penColorOptions = [
   },
 ];
 
-export const typeFontFamilyOptions = [
+export const typeFontFamilyOptions: FontFamilyOption[] = [
   {
     id: 0,
     value: 'Caveat',

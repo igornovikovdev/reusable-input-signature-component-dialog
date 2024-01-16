@@ -1,0 +1,12 @@
+.signature-pad-modal-canvas {
+  max-width: 640px;
+  height: 200px;
+  border: 1px dashed #bec9d9;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.signature-canvas {
+  width: 100%;
+  height: 200px;
+}
