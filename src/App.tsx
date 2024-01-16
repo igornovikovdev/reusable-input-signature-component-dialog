@@ -2,7 +2,9 @@ import SignaturePad from './components/SignaturePad/SignaturePad';
 
 function App() {
   return (
-    <SignaturePad />
+    <div style={{ width: '350px', height: '120px' }}>
+      <SignaturePad />
+    </div>
   )
 }
 

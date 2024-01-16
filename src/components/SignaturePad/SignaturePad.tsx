@@ -4,7 +4,8 @@ import { penColorOptions } from '../../constants/signaturePad.constants';
 import './SignaturePad.css';
 
 const SignaturePad = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [signatureSrc, setSignatureSrc] = useState<string | undefined>();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPenColorOption, setSelectedPenColorOption] = useState(penColorOptions[2]);
   const canvasRef = useRef<SignatureCanvas>(null);
 
@@ -17,12 +18,34 @@ const SignaturePad = () => {
     }
   }
 
-  const clearSignature = () => {
+  const onClearSignatureClick = () => {
     canvasRef.current?.clear();
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  }
+
+  const onDoneClick = () => {
+    if (!canvasRef.current) {
+      return;
+    }
+
+    setSignatureSrc(canvasRef.current.toDataURL());
+    closeModal();
   };
 
   return (
     <div className="signature-pad">
+      <figure className="signature-pad-figure">
+        <div className="signature-pad-img-wrapper" onClick={openModal}>
+          <img className="signature-pad-img" src={signatureSrc} />
+        </div>
+      </figure>
       {isModalOpen && (
         <div className="signature-pad-modal">
           <div className="signature-pad-modal-wrapper">
@@ -61,13 +84,13 @@ const SignaturePad = () => {
                   canvasProps={{ className: 'signature-canvas' }}
                 />
               </div>
-              <button className="clear-signature-button" onClick={clearSignature}>
+              <button className="clear-signature-button" onClick={onClearSignatureClick}>
                 Clear Signature
               </button>
             </div>
             <div className="signature-pad-modal-footer">
-              <button>Cancel</button>
-              <button className="done-button">Done</button>
+              <button onClick={closeModal}>Cancel</button>
+              <button className="done-button" onClick={onDoneClick}>Done</button>
             </div>
           </div>
         </div>

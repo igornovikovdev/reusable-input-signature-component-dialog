@@ -14,6 +14,26 @@ button:hover {
 
 .signature-pad {
   text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.signature-pad-figure {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #bec9d9;
+}
+
+.signature-pad-img-wrapper {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.signature-pad-img {
+  width: 100%;
+  height: 100%;
 }
 
 .signature-pad-modal {
