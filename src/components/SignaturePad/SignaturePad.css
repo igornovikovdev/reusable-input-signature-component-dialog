@@ -151,6 +151,10 @@ button:hover {
   border-color: transparent;
 }
 
+.clear-signature-button:disabled {
+  opacity: 0.3;
+}
+
 .signature-pad-modal-footer {
   display: flex;
   justify-content: flex-end;
