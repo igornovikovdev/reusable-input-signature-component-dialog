@@ -13,12 +13,20 @@
 }
 
 .signature-pad-modal-wrapper {
-  width: 90%;
-  max-width: 1200px;
+  width: 100%;
+  height: 100%;
   border: 5px;
   background-color: white;
   box-sizing: border-box;
-  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .signature-pad-modal-wrapper {
+    max-width: 1200px;
+    width: 90%;
+    height: unset;
+    border-radius: 5px;
+  }
 }
 
 .signature-pad-modal-header {
@@ -37,7 +45,13 @@
 
 .signature-pad-modal-content {
   padding-top: 20px;
-  height: 440px;
+  height: calc(100% - 220px);
+}
+
+@media (min-width: 768px) {
+  .signature-pad-modal-content {
+    height: 440px;
+  }
 }
 
 .signature-pad-modal-footer {

@@ -40,11 +40,17 @@ label.font-type-option {
   border-bottom: 1px solid #d8dfeb;
   border-right: 1px solid #d8dfeb;
   display: flex;
-  flex: 0 0 50%;
+  flex: 0 0 100%;
   flex-direction: row;
   font-size: 30px;
   letter-spacing: .02em;
   line-height: 20px;
   padding-left: 3%;
   margin: 0;
+}
+
+@media (min-width: 768px) {
+  label.font-type-option {
+    flex: 0 0 50%;
+  }
 }
