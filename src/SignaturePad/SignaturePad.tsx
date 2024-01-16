@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
 import ReactSignatureCanvas from 'react-signature-canvas';
-import { penColorOptions } from '../../constants/signaturePad.constants';
+import { penColorOptions } from '../constants/signaturePad.constants';
+import { Tab, Tabs } from '@mui/material';
 import './SignaturePad.css';
 
 const SignaturePad = () => {
   const [signatureSrc, setSignatureSrc] = useState<string | undefined>();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [selectedTab, setSelectedTab] = useState('draw');
   const [selectedPenColorOption, setSelectedPenColorOption] = useState(penColorOptions[2]);
   let canvasRef: ReactSignatureCanvas | null = null;
 
@@ -17,6 +19,10 @@ const SignaturePad = () => {
     if (newPenValue) {
       setSelectedPenColorOption(newPenValue);
     }
+  }
+
+  const onTabChange = (_: React.SyntheticEvent, newValue: string) => {
+    setSelectedTab(newValue);
   }
 
   const onClearSignatureClick = () => {
@@ -53,6 +59,10 @@ const SignaturePad = () => {
             <p className="signature-pad-modal-header">
               Add Signature
             </p>
+            <Tabs value={selectedTab} onChange={onTabChange}>
+              <Tab label="Draw" value="draw" />
+              <Tab label="Type" value="type" />
+            </Tabs>
             <div className="signature-pad-modal-content">
               <div className="signature-pag-pen-color-selector">
                 {penColorOptions.map((option) => (

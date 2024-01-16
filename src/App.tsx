@@ -1,4 +1,4 @@
-import SignaturePad from './components/SignaturePad/SignaturePad';
+import SignaturePad from './SignaturePad/SignaturePad';
 
 function App() {
   return (
