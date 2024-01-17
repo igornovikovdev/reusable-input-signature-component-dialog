@@ -10,19 +10,20 @@ import '@fontsource/marck-script/400.css';
 import '@fontsource/meddon/400.css';
 
 interface Props {
-  signatureCanvas: ReactSignatureCanvas | null;
-  setSignatureCanvas: React.Dispatch<React.SetStateAction<ReactSignatureCanvas | null>>;
+  signatureSrc: string | undefined;
+  setSignatureSrc: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
 const SignaturePad = ({
-  signatureCanvas,
-  setSignatureCanvas,
+  signatureSrc,
+  setSignatureSrc,
 }: Props) => {
-  const [signatureSrc, setSignatureSrc] = useState<string | undefined>();
+  // const [signatureSrc, setSignatureSrc] = useState<string | undefined>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPenColorOption, setSelectedPenColorOption] = useState(penColorOptions[0]);
   const [typedSignatureValue, setTypedSignatureValue] = useState('');
   const [selectedSignatureFontFamily, setSelectedSignatureFontFamily] = useState(typeFontFamilyOptions[0]);
+  const [signatureCanvas, setSignatureCanvas] = useState<ReactSignatureCanvas | null>(null);
 
   const handlePenColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
