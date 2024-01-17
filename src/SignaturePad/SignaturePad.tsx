@@ -99,9 +99,9 @@ const SignaturePad = ({
       const textDataUrl = await getDataUrlForTypedSignature();
 
       setSignatureSrc(textDataUrl);
-      setTypedSignatureValue('');
     }
 
+    setTypedSignatureValue('');
     closeModal();
   };
 
