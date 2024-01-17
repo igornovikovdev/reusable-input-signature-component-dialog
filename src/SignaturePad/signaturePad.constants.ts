@@ -36,3 +36,5 @@ export const typeFontFamilyOptions: FontFamilyOption[] = [
     value: 'Meddon',
   },
 ];
+
+export const transparentImg = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=';

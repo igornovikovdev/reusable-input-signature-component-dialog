@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactSignatureCanvas from 'react-signature-canvas';
 import html2canvas from 'html2canvas';
 import SignaturePadModal from './components/SignaturePadModal/SignaturePadModal';
-import { penColorOptions, typeFontFamilyOptions } from './signaturePad.constants';
+import { penColorOptions, transparentImg, typeFontFamilyOptions } from './signaturePad.constants';
 import './SignaturePad.css';
 import '@fontsource/caveat/700.css';
 import '@fontsource/pacifico/400.css';
@@ -18,7 +18,6 @@ const SignaturePad = ({
   signatureSrc,
   setSignatureSrc,
 }: Props) => {
-  // const [signatureSrc, setSignatureSrc] = useState<string | undefined>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPenColorOption, setSelectedPenColorOption] = useState(penColorOptions[0]);
   const [typedSignatureValue, setTypedSignatureValue] = useState('');
@@ -65,7 +64,7 @@ const SignaturePad = ({
 
   const getDataUrlForTypedSignature = async (): Promise<string | undefined> => {
     if (!typedSignatureValue) {
-      return;
+      return transparentImg;
     }
 
     const hiddenDiv = document.createElement('div');
@@ -86,7 +85,7 @@ const SignaturePad = ({
 
     document.body.removeChild(hiddenDiv);
 
-    return canvas.toDataURL();
+    return canvas.toDataURL('image/png');
   };
 
   const onDoneClick = async (selectedTab: string) => {
@@ -95,9 +94,11 @@ const SignaturePad = ({
         return;
       }
 
+      console.log(signatureCanvas.toDataURL())
       setSignatureSrc(signatureCanvas.toDataURL());
     } else {
       const textDataUrl = await getDataUrlForTypedSignature();
+      console.log(textDataUrl)
 
       setSignatureSrc(textDataUrl);
     }
