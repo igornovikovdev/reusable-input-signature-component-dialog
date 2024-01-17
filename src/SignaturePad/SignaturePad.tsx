@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactSignatureCanvas from 'react-signature-canvas';
 import html2canvas from 'html2canvas';
 import SignaturePadModal from './components/SignaturePadModal/SignaturePadModal';
-import { penColorOptions, transparentImg, typeFontFamilyOptions } from './signaturePad.constants';
+import { penColorOptions, typeFontFamilyOptions } from './signaturePad.constants';
 import './SignaturePad.css';
 import '@fontsource/caveat/700.css';
 import '@fontsource/pacifico/400.css';
@@ -64,7 +64,7 @@ const SignaturePad = ({
 
   const getDataUrlForTypedSignature = async (): Promise<string | undefined> => {
     if (!typedSignatureValue) {
-      return transparentImg;
+      return '';
     }
 
     const hiddenDiv = document.createElement('div');
@@ -99,6 +99,7 @@ const SignaturePad = ({
       const textDataUrl = await getDataUrlForTypedSignature();
 
       setSignatureSrc(textDataUrl);
+      setTypedSignatureValue('');
     }
 
     closeModal();
@@ -110,13 +111,16 @@ const SignaturePad = ({
         <div
           data-testid="signature-display-field"
           className="signature-pad-img-wrapper"
-          onClick={openModal}
+          style={{ cursor: !signatureSrc ? 'pointer' : 'default' }}
+          onClick={() => !signatureSrc && openModal()}
         >
-          <img
-            className="signature-pad-img"
-            data-testid="signature-pad-img"
-            src={signatureSrc}
-          />
+          {signatureSrc && (
+            <img
+              className="signature-pad-img"
+              data-testid="signature-pad-img"
+              src={signatureSrc}
+            />
+          )}
         </div>
       </figure>
       {isModalOpen && (
