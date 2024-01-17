@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SignatureCanvas from 'react-signature-canvas';
+import ReactSignatureCanvas from 'react-signature-canvas';
 import html2canvas from 'html2canvas';
 import SignaturePadModal from './components/SignaturePadModal/SignaturePadModal';
 import { penColorOptions, typeFontFamilyOptions } from './signaturePad.constants';
@@ -9,13 +9,20 @@ import '@fontsource/pacifico/400.css';
 import '@fontsource/marck-script/400.css';
 import '@fontsource/meddon/400.css';
 
-const SignaturePad = () => {
+interface Props {
+  signatureCanvas: ReactSignatureCanvas | null;
+  setSignatureCanvas: React.Dispatch<React.SetStateAction<ReactSignatureCanvas | null>>;
+}
+
+const SignaturePad = ({
+  signatureCanvas,
+  setSignatureCanvas,
+}: Props) => {
   const [signatureSrc, setSignatureSrc] = useState<string | undefined>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPenColorOption, setSelectedPenColorOption] = useState(penColorOptions[0]);
   const [typedSignatureValue, setTypedSignatureValue] = useState('');
   const [selectedSignatureFontFamily, setSelectedSignatureFontFamily] = useState(typeFontFamilyOptions[0]);
-  let canvasRef: SignatureCanvas | null = null;
 
   const handlePenColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -39,12 +46,8 @@ const SignaturePad = () => {
     }
   }
 
-  const setCanvasRef = (ref: SignatureCanvas | null) => {
-    canvasRef = ref;
-  }
-
   const onClearSignatureClick = () => {
-    canvasRef?.clear();
+    signatureCanvas?.clear();
   };
 
   const onClearTypedSignatureClick = () => {
@@ -87,11 +90,11 @@ const SignaturePad = () => {
 
   const onDoneClick = async (selectedTab: string) => {
     if (selectedTab === 'draw') {
-      if (!canvasRef) {
+      if (!signatureCanvas) {
         return;
       }
 
-      setSignatureSrc(canvasRef.toDataURL());
+      setSignatureSrc(signatureCanvas.toDataURL());
     } else {
       const textDataUrl = await getDataUrlForTypedSignature();
 
@@ -121,7 +124,7 @@ const SignaturePad = () => {
           selectedPenColorOption={selectedPenColorOption}
           selectedSignatureFontFamily={selectedSignatureFontFamily}
           typedSignatureValue={typedSignatureValue}
-          setCanvasRef={setCanvasRef}
+          setCanvasRef={setSignatureCanvas}
           closeModal={closeModal}
           handlePenColorChange={handlePenColorChange}
           onClearSignatureClick={onClearSignatureClick}

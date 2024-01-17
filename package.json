@@ -50,6 +50,10 @@
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
   },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "@types/react-signature-canvas": "^1.0.5"
+  },
   "jest": {
     "testEnvironment": "jsdom",
     "moduleNameMapper": {
