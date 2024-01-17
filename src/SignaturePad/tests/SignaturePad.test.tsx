@@ -4,8 +4,10 @@ import userEvent from '@testing-library/user-event';
 import { penColorOptions, typeFontFamilyOptions } from '../signaturePad.constants';
 
 describe('SignaturePad tests', () => {
+  let signatureSrc: string | undefined;
+
   it('should render input field', () => {
-    render(<SignaturePad />);
+    render(<SignaturePad signatureSrc={signatureSrc} setSignatureSrc={jest.fn()} />);
 
     expect(screen.getByTestId('signature-display-field')).toBeInTheDocument();
     expect(screen.queryByTestId('signature-pad-modal')).not.toBeInTheDocument();
@@ -13,7 +15,7 @@ describe('SignaturePad tests', () => {
   });
 
   it('should open Add Signature modal on signature field click', async () => {
-    render(<SignaturePad />);
+    render(<SignaturePad signatureSrc={signatureSrc} setSignatureSrc={jest.fn()} />);
 
     await act(() => userEvent.click(screen.getByTestId('signature-display-field')));
     expect(screen.getByTestId('signature-pad-modal')).toBeInTheDocument();
@@ -23,7 +25,7 @@ describe('SignaturePad tests', () => {
   });
 
   it('should properly display default Draw tab section of Add Signature modal', async () => {
-    render(<SignaturePad />);
+    render(<SignaturePad signatureSrc={signatureSrc} setSignatureSrc={jest.fn()} />);
 
     await act(() => userEvent.click(screen.getByTestId('signature-display-field')));
     expect(screen.getByTestId('tab-draw')).toHaveAttribute('aria-selected', 'true');
@@ -34,7 +36,7 @@ describe('SignaturePad tests', () => {
   });
 
   it('should have correct pen color values and correct selected default pen color', async () => {
-    render(<SignaturePad />);
+    render(<SignaturePad signatureSrc={signatureSrc} setSignatureSrc={jest.fn()} />);
 
     await act(() => userEvent.click(screen.getByTestId('signature-display-field')));
     expect(screen.getByTestId('pen-color-selector')).toBeInTheDocument();
@@ -56,7 +58,7 @@ describe('SignaturePad tests', () => {
   });
 
   it('should properly display Type tab section of Add Signature modal', async () => {
-    render(<SignaturePad />);
+    render(<SignaturePad signatureSrc={signatureSrc} setSignatureSrc={jest.fn()} />);
 
     await act(() => userEvent.click(screen.getByTestId('signature-display-field')));
     expect(screen.getByTestId('tab-type')).toHaveAttribute('aria-selected', 'false');
@@ -69,7 +71,7 @@ describe('SignaturePad tests', () => {
   });
 
   it('should be able to type into input field of Type tab', async () => {
-    render(<SignaturePad />);
+    render(<SignaturePad signatureSrc={signatureSrc} setSignatureSrc={jest.fn()} />);
 
     await act(() => userEvent.click(screen.getByTestId('signature-display-field')));
     await act(() => userEvent.click(screen.getByTestId('tab-type')));
@@ -80,7 +82,7 @@ describe('SignaturePad tests', () => {
   });
 
   it('should be able to clear input value in Type tab', async () => {
-    render(<SignaturePad />);
+    render(<SignaturePad signatureSrc={signatureSrc} setSignatureSrc={jest.fn()} />);
 
     await act(() => userEvent.click(screen.getByTestId('signature-display-field')));
     await act(() => userEvent.click(screen.getByTestId('tab-type')));
@@ -91,7 +93,7 @@ describe('SignaturePad tests', () => {
   });
 
   it('should have correct font family options in Type tab', async () => {
-    render(<SignaturePad />);
+    render(<SignaturePad signatureSrc={signatureSrc} setSignatureSrc={jest.fn()} />);
 
     await act(() => userEvent.click(screen.getByTestId('signature-display-field')));
     await act(() => userEvent.click(screen.getByTestId('tab-type')));
@@ -109,7 +111,7 @@ describe('SignaturePad tests', () => {
   });
 
   it('should have correct default pen color and font family applied', async () => {
-    render(<SignaturePad />);
+    render(<SignaturePad signatureSrc={signatureSrc} setSignatureSrc={jest.fn()} />);
 
     await act(() => userEvent.click(screen.getByTestId('signature-display-field')));
     await act(() => userEvent.click(screen.getByTestId('tab-type')));
@@ -120,7 +122,7 @@ describe('SignaturePad tests', () => {
   });
 
   it('should be able to change pen color and font family', async () => {
-    render(<SignaturePad />);
+    render(<SignaturePad signatureSrc={signatureSrc} setSignatureSrc={jest.fn()} />);
 
     await act(() => userEvent.click(screen.getByTestId('signature-display-field')));
     await act(() => userEvent.click(screen.getByTestId('tab-type')));
