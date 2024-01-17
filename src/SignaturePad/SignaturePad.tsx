@@ -94,11 +94,9 @@ const SignaturePad = ({
         return;
       }
 
-      console.log(signatureCanvas.toDataURL())
       setSignatureSrc(signatureCanvas.toDataURL());
     } else {
       const textDataUrl = await getDataUrlForTypedSignature();
-      console.log(textDataUrl)
 
       setSignatureSrc(textDataUrl);
     }
