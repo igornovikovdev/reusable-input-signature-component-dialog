@@ -33,3 +33,8 @@
       />
     </div>
     ```
+5. You'd need to add a button (or any other logic) that should clear the signature. `onClick` method might have the following logic:
+    ```tsx
+    onClick={() => setSignatureSrc('')}
+    ```
+    This was not implemented as part of the package to provide users more control over how and where they want to allow signature deletion.
