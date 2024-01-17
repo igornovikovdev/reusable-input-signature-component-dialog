@@ -16,14 +16,21 @@ const DrawSignatureTab = ({
 }: Props) => {
   return (
     <>
-      <div className="signature-pad-modal-canvas">
+      <div
+        className="signature-pad-modal-canvas"
+        data-testid="signature-canvas-wrapper"
+      >
         <SignatureCanvas
           ref={setCanvasRef}
           penColor={selectedPenColorOption.color}
           canvasProps={{ className: 'signature-canvas' }}
         />
       </div>
-      <button className="clear-signature-button" onClick={onClearSignatureClick}>
+      <button
+        className="clear-signature-button"
+        data-testid="clear-signature-button"
+        onClick={onClearSignatureClick}
+      >
         Clear Signature
       </button>
     </>

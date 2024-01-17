@@ -41,14 +41,14 @@ const SignaturePadModal = ({
   }
 
   return (
-    <div className="signature-pad-modal">
+    <div className="signature-pad-modal" data-testid="signature-pad-modal">
       <div className="signature-pad-modal-wrapper">
-        <p className="signature-pad-modal-header">
+        <p className="signature-pad-modal-header" data-testid="signature-pad-modal-header">
           Add Signature
         </p>
         <Tabs className="signature-pad-modal-tabs" value={selectedTab} onChange={onTabChange}>
-          <Tab id="tab-draw" label="Draw" value="draw" />
-          <Tab id="tab-type" label="Type" value="type" />
+          <Tab id="tab-draw" data-testid="tab-draw" label="Draw" value="draw" />
+          <Tab id="tab-type" data-testid="tab-type" label="Type" value="type" />
         </Tabs>
         <div className="signature-pad-modal-content">
           <PenColorSelector
@@ -74,9 +74,15 @@ const SignaturePadModal = ({
           )}
         </div>
         <div className="signature-pad-modal-footer">
-          <button onClick={closeModal}>Cancel</button>
+          <button
+            data-testid="cancel-button"
+            onClick={closeModal}
+          >
+            Cancel
+          </button>
           <button
             className="done-button"
+            data-testid="done-button"
             onClick={() => onDoneClick(selectedTab)}
           >
             Done

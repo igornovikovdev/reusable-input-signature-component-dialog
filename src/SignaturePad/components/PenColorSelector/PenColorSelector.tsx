@@ -13,10 +13,11 @@ const PenColorSelector = ({
   handlePenColorChange
 }: Props) => {
   return (
-    <div className="signature-pag-pen-color-selector">
+    <div className="signature-pag-pen-color-selector" data-testid="pen-color-selector">
       {penColorOptions.map((option) => (
         <label
           key={`color_${option.id}`}
+          data-testid="pen-color-selector-option"
           className={`signature-pag-pen-color-label ${
             option.id === selectedPenColorOption.id &&
             'signature-pag-pen-color-option-selected'

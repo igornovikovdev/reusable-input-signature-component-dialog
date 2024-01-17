@@ -27,6 +27,7 @@ const TypeSignatureTab = ({
       <div className="signature-pad-type-wrapper">
         <input
           className="signature-pad-type-input"
+          data-testid="signature-pad-type-input"
           placeholder="Signature"
           style={{
             fontFamily: `"${selectedSignatureFontFamily.value}", cursive`,
@@ -35,7 +36,11 @@ const TypeSignatureTab = ({
           value={typedSignatureValue}
           onChange={onTypeSignatureChange}
         />
-        <button className="clear-signature-button" onClick={onClearTypedSignatureClick}>
+        <button
+          className="clear-signature-button"
+          data-testid="clear-signature-button"
+          onClick={onClearTypedSignatureClick}
+        >
           Clear Signature
         </button>
       </div>
@@ -43,12 +48,14 @@ const TypeSignatureTab = ({
         <RadioGroup
           name="font-type-selector"
           className="signature-pad-font-radio-group"
+          data-testid="font-type-selector"
           onChange={onFontFamilyChange}
           row
         >
           {typeFontFamilyOptions.map((option) => (
             <FormControlLabel
               className="font-type-option"
+              data-testid="font-type-option"
               label="Signature"
               key={`font_${option.id}`}
               value={option.id}

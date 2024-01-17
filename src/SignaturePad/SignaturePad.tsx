@@ -5,13 +5,13 @@ import SignaturePadModal from './components/SignaturePadModal/SignaturePadModal'
 import { penColorOptions, typeFontFamilyOptions } from './signaturePad.constants';
 import './SignaturePad.css';
 import '@fontsource/caveat/700.css';
-import '@fontsource/pacifico';
-import '@fontsource/marck-script';
-import '@fontsource/meddon';
+import '@fontsource/pacifico/400.css';
+import '@fontsource/marck-script/400.css';
+import '@fontsource/meddon/400.css';
 
 const SignaturePad = () => {
   const [signatureSrc, setSignatureSrc] = useState<string | undefined>();
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPenColorOption, setSelectedPenColorOption] = useState(penColorOptions[0]);
   const [typedSignatureValue, setTypedSignatureValue] = useState('');
   const [selectedSignatureFontFamily, setSelectedSignatureFontFamily] = useState(typeFontFamilyOptions[0]);
@@ -104,8 +104,16 @@ const SignaturePad = () => {
   return (
     <div className="signature-pad">
       <figure className="signature-pad-figure">
-        <div className="signature-pad-img-wrapper" onClick={openModal}>
-          <img className="signature-pad-img" src={signatureSrc} />
+        <div
+          data-testid="signature-display-field"
+          className="signature-pad-img-wrapper"
+          onClick={openModal}
+        >
+          <img
+            className="signature-pad-img"
+            data-testid="signature-pad-img"
+            src={signatureSrc}
+          />
         </div>
       </figure>
       {isModalOpen && (
