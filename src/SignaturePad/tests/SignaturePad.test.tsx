@@ -11,7 +11,7 @@ describe('SignaturePad tests', () => {
 
     expect(screen.getByTestId('signature-display-field')).toBeInTheDocument();
     expect(screen.queryByTestId('signature-pad-modal')).not.toBeInTheDocument();
-    expect(screen.getByTestId('signature-pad-img')).not.toHaveAttribute('src');
+    expect(screen.queryByTestId('signature-pad-img')).not.toBeInTheDocument();
   });
 
   it('should open Add Signature modal on signature field click', async () => {
