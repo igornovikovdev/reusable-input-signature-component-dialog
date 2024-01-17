@@ -1,0 +1,5 @@
+describe('SignaturePad tests', () => {
+  it('', () => {
+    
+  });
+});
